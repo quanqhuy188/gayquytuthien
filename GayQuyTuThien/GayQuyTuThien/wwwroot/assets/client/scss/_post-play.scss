@@ -1,0 +1,178 @@
+/*===========================
+    11.POST PLAY css 
+===========================*/
+
+
+
+
+.post-play-area{
+    padding: 70px 0;
+    background: #17222B;
+    margin-top: 100px;
+    &.mt-100{
+        margin-top: 0;
+        padding-top: 66px;
+    }
+}
+
+.post-play-item{
+    position: relative;
+    & img{
+        width: 100%;
+        border-radius: 8px 0 0 8px;
+    }
+    & .post-play-content{
+        position: absolute;
+        bottom: 40px;
+        left: 50px;
+        @media #{$xs} {
+            left: 20px;
+            bottom: 20px;
+        }
+        & > .title{
+            font-size: 44px;
+            line-height: 54px;
+            @media #{$lg} {
+                font-size: 36px;
+                line-height: 44px;
+                
+            }
+            @media #{$md} {
+                font-size: 41px;
+                line-height: 48px;
+            }
+            @media #{$xs} {
+                font-size: 24px;
+                line-height: 30px;
+            }
+            @media #{$sm} {
+                font-size: 30px;
+                line-height: 36px;
+            }
+            & a{
+                color: $white;
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        & .play-meta{
+            position: relative;
+            padding-left: 72px;
+            & a{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 55px;
+                width: 55px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 55px;
+                background: linear-gradient(90deg, rgba(255,85,85,1) 0%, rgba(171,80,239,1) 100%);
+                color: $white;
+                font-size: 16px;
+            }
+            & .title{
+                color: $white;
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            & span{
+                font-size: 14px;
+                font-weight: 400;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+.post-play-list{
+    background: $white;
+    padding: 25px 25px 6px;
+    @media #{$xs} {
+        max-height: 375px;
+        overflow-y: scroll;
+    }
+    & .post-play-list-item{
+        border-bottom: 1px solid #E8E8E8;
+        margin-bottom: 10px;
+        @media #{$laptop} {
+            margin-bottom: 5px;
+        }
+        & .play-meta{
+            padding-left: 40px;
+            position: relative;
+            & a{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 26px;
+                width: 26px;
+                text-align: center;
+                line-height: 26px;
+                border: 1px solid #FE9898;
+                color: #FE9898;
+                border-radius: 50%;
+                font-size: 12px;
+            }
+            & .title{
+                font-size: 12px;
+                font-weight: 500;
+                color: $theme-color;
+                margin-bottom: 0px;
+            }
+            & span{
+                color: rgba(23, 34, 43, 0.5);
+            }
+        }
+        & > .title{
+            font-size: 20px;
+            line-height: 24px;
+            padding-top: 6px;
+            margin-bottom: 13px;
+            @media #{$laptop} {
+                font-size: 18px;
+                line-height: 22px;
+                margin-bottom: 9px;
+            }
+            @media #{$lg} {
+                font-size: 15px;
+                line-height: 18px;
+            }
+            & a{
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        &:last-child{
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

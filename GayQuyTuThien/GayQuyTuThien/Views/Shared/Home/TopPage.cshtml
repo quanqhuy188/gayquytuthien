@@ -1,0 +1,138 @@
+﻿<section id="top-page">
+    <div class="container-fluid p-0">
+        <!--
+        <img loading="lazy" src="/images/top-page/background-top.jpg" class="w-100 d-sm-none" alt="">
+        <img loading="lazy" src="/images/top-page/banner-tablet.jpg" class="w-100 d-none d-sm-flex d-xl-none" alt="">
+        <img loading="lazy" src="/images/top-page/banner.jpg" class="w-100 d-none d-xl-block" alt="">
+        -->
+        <picture d-block="" w-100="">
+            <!-- Ảnh cho màn hình nhỏ -->
+            <source srcset="/image/banner/banner.png" media="(max-width: 576px)">
+            <!-- Ảnh cho màn hình lớn -->
+            <source srcset="/image/banner/banner.png" media="(max-width: 1200px)">
+
+            <source srcset="/image/banner/banner.png" media="(min-width: 1200px)">
+            <!-- Ảnh mặc định -->
+            <img loading="lazy" src="/image/banner/banner.png" class="img-fluid" alt="Responsive image">
+        </picture>
+        <div class="container background-top d-none">
+            <div class="row">
+                <div class="col-auto">
+                    <div class="custom-p-logo mt-sm-1">
+                        <img loading="lazy" src="/image/logo.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center custom-screen">
+                <div class="col-auto col-sm-7 position-relative">
+                    <!--
+                        <img loading="lazy" class="d-block d-sm-none w-100" src="/images/top-page/background-sum.svg" alt="">
+                        <img loading="lazy" class="d-block d-none d-sm-flex d-xl-none w-100"
+                            src="/images/top-page/background-sum-tablet.svg" alt="">
+                        <img loading="lazy" class="d-none d-xl-block w-100" src="/images/top-page/background-sum-lg.svg" alt="">
+                    -->
+                    <picture d-block="" w-100="">
+                        <!-- Ảnh cho màn hình nhỏ -->
+                        <source srcset="/image/background-sum.svg" media="(max-width: 576px)">
+                        <!-- Ảnh cho màn hình lớn -->
+                        <source srcset="/image/background-sum-tablet.svg" media="(max-width: 1200px)">
+
+                        <source srcset="/image/background-sum-lg.svg" media="(min-width: 1200px)">
+                        <!-- Ảnh mặc định -->
+                        <img loading="lazy" src="/image/background-sum-lg.svg" class="img-fluid" alt="Responsive image">
+                    </picture>
+                    <div id="total-kun" class="position-absolute f-f-SVN-Bali">395.000</div>
+                </div>
+            </div>
+            <div class="row f-f-SVN-Bali justify-content-center">
+                <div class="col-sm-10 col-md-12 col-12 text-title-1 justify-content-center d-sm-flex">
+                    <div class="line-height-milk">
+                        hộp Greenmilk 100% SỮA TƯƠI
+                        đã được trao tặng cho<br>
+                        <span id="total-child">122.400</span>
+                        <span>em bé vùng cao</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row mb-3 d-none d-md-flex">
+            <div class="col-sm-4 col-md-6 pe-0">
+                <!--
+                    <img loading="lazy" class="w-100 h-100 d-none d-xl-flex" src="/images/top-page/hashtag-image.jpg" alt="">
+                    <img loading="lazy" class="w-100 h-100 d-none d-sm-flex d-xl-none" src="/images/top-page/hashtag-image-tablet.jpg"
+                        alt="">
+                -->
+                <picture d-block="" w-100="">
+                    <!-- Ảnh cho màn hình nhỏ -->
+                    <source srcset="/image/banner/cedt.jpg" media="(max-width: 720px)">
+                    <!-- Ảnh cho màn hình lớn -->
+                    <source srcset="/image/banner/cedt.jpg" media="(max-width: 992px)">
+                    <source srcset="/image/banner/cedt.jpg" media="(min-width: 992px)">
+                    <!-- Ảnh mặc định -->
+                    <img loading="lazy" src="/image/banner/cedt.jpg" class="img-fluid" alt="Responsive image">
+                </picture>
+            </div>
+            <div class="col-sm-8 col-md-6 ps-0 position-relative">
+                <div class="position-absolute ">
+                    <div class="hashtag">
+                        <img loading="lazy" class="w-100 hashtag-img" src="/image/label-hashtag-tablet.svg" alt="">
+                        <div class="color-primary2 position-absolute hashtag-title">
+                            <span class="f-f-Montserrat-Bold hashtag-title-normal">
+                                Với mỗi lượt chia sẻ kèm Hashtag*
+                            </span>
+                            <span class="f-f-Montserrat-Bold hashtag-title-character">#GREENMILKcungemdentruong</span>
+                        </div>
+                    </div>
+                    <div class="hashtag-title-pc hashtag-title-tablet">
+                        <div class="f-f-Montserrat-Regular color-primary1 hashtag-title-normal">
+                            <b>Bạn đã đồng thời</b>
+                        </div>
+                        <div class="f-f-Montserrat-Bold color-primary1 hashtag-title-character">
+                            TẶNG 5 ngàn đồng vào chương trình gây quỹ 
+                            từ thiện cùng trẻ vùng cao đến trường
+                        </div>
+                    </div>
+                    <button class="btn-top position-absolute" data-bs-toggle="modal" data-bs-target="#postcardModal" onclick="removeDisable()">
+                        <span class="f-f-Montserrat-Regular text-white"><b>CHUNG TAY "cùng em đến trường"</b></span>
+                        <img loading="lazy" src="/image/arrow_next.svg" alt="">
+                    </button>
+                </div>
+                <img loading="lazy" class="w-100 background-hashtag-pc d-none d-xl-flex" src="/image/background-hashtag-pc.png" alt="">
+                <img loading="lazy" class="w-100 background-hashtag-tablet d-none d-sm-flex d-xl-none" src="/image/background-hashtag-tablet.png" alt="">
+            </div>
+        </div>
+        <div class="row mb-5 d-md-none">
+            <div class="background-title text-title-2 position-relative">
+                <div class="position-absolute hashtag">
+                    <img loading="lazy" class="w-100" src="/image/background-hashtag.svg" alt="">
+                    <span class="f-f-Montserrat-Bold f-s-18 color-primary2 position-absolute hashtag-title">
+                        Với mỗi lượt
+                        chia sẻ kèm Hashtag* #GREENMILKcungemdentruong
+                    </span>
+                </div>
+                <div class="f-f-Montserrat-Regular color-primary1 f-s-18"><b>Bạn đã đồng thời</b></div>
+                <div class="f-f-Montserrat-Bold color-primary1 f-s-18">
+                    TẶNG 5 ngàn đồng vào chương trình gây quỹ
+                    từ thiện cùng trẻ vùng cao đến trường
+                </div>
+                <button class="btn-top position-absolute" data-bs-toggle="modal" data-bs-target="#postcardModal" onclick="removeDisable()">
+                    <span class="f-f-Montserrat-Regular text-white"><b>CHUNG TAY "cùng em đến trường"</b></span>
+                    <img loading="lazy" src="/image/arrow_next.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <span class="f-f-Montserrat-Regular f-s-14 text-note" style="color:#007469;">
+                <b>
+                    <i>
+                        * Lượt chia sẻ được tính khi người tham gia thực hiện chia sẻ thông tin dự án hoặc postcard lên Facebook kèm hashtag #greenmilkcungemdentruong hoặc đăng lại (repost) lên Tiktok.
+                    </i>
+                </b>
+            </span>
+            @*<span class="f-f-Montserrat-Regular f-s-14 text-note" style="color:#007469;"><b><i>* KUN sẽ dành tặng số lượng hộp sữa KUN 100% Sữa Tươi tương đương với số lượng hashtag được hệ thống kiểm đo Social Listening đếm được và đạt mức NỬA TRIỆU hộp sữa ở giai đoạn 1.</i></b></span>*@
+
+        </div>
+    </div>
+</section>

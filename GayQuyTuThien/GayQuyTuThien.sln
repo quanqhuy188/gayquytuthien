@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GayQuyTuThien", "GayQuyTuThien\GayQuyTuThien.csproj", "{FBC0218A-DF17-4423-A351-8C92C5D7A279}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "conf", "conf", "{4AB5A13F-405C-4DC5-849D-068B6DA72334}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prod", "prod", "{BAB0C773-B29B-4A3B-A0A6-4A0969C8FF89}"
+	ProjectSection(SolutionItems) = preProject
+		..\conf\prod\appsettings.json = ..\conf\prod\appsettings.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC0218A-DF17-4423-A351-8C92C5D7A279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC0218A-DF17-4423-A351-8C92C5D7A279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC0218A-DF17-4423-A351-8C92C5D7A279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC0218A-DF17-4423-A351-8C92C5D7A279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAB0C773-B29B-4A3B-A0A6-4A0969C8FF89} = {4AB5A13F-405C-4DC5-849D-068B6DA72334}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB2E9690-2BC7-4E51-A1F0-53406A902A3F}
+	EndGlobalSection
+EndGlobal

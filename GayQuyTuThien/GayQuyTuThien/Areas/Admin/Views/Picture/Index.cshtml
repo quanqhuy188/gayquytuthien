@@ -1,0 +1,133 @@
+﻿@model IEnumerable<PictureDto>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+	ViewData["Title"] = "Picture List";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+	int count = 1;
+}
+
+@section footer{
+	<script>
+		$("#select-cate").select2({
+		});
+
+		function clearSelectedOptions() {
+			$('#select-cate').val(null).trigger('change');
+			$("#ip-search").val("");
+		}
+		$(document).ready(function () {
+			$("#btn-clear").on("click", clearSelectedOptions);
+		});
+
+		$(document).on('click', '.btnDelete', function (e) {
+			e.preventDefault();
+			var that = $(this).data('id');
+			bootbox.confirm('Bạn có chắc muốn xoá ảnh này?', function (result) {
+				if (result) {
+					$.ajax({
+						type: "POST",
+						url: '/admin/picture/delete',
+						data: { id: that },
+						success: function (responce) {
+							if (responce.status == true) {
+								toastr.success("Success!");
+							}
+							else {
+								toastr.error("Error!");
+							}
+							window.location.href = "/admin/picture";
+						},
+						error: function () {
+						}
+					});
+				}
+			});
+		});
+
+	</script>
+}
+
+<div class="page-header page-header-light">
+	<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+		<div class="d-flex">
+			<div class="breadcrumb">
+				<a href="/admin/home" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Trang chủ</a>
+				<span class="breadcrumb-item active">Quản lý hình ảnh</span>
+			</div>
+			<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	@*<div class="card">
+		<div class="card-header header-elements-inline" style="width:1000px;">
+			<form asp-area="Admin" asp-controller="Post" asp-action="Index" method="get" style="width:100%;">
+				<div class="row">
+					<div class="col-md-4">
+						<input type="text" name="keyword" id="ip-search" value="@ViewBag.Keyword" class="form-control" placeholder="Search...">
+					</div>
+					<div class="col-md-4">
+						<button type="button" id="btn-clear" class="btn btn-outline-danger">Clear</button>
+						<button type="submit" class="btn btn-primary">Search <i class="icon-search4 ml-2"></i></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	
+	</div>*@
+	<div class="card">
+		<div class="card-header header-elements-inline">
+			<h5 class="card-title">Danh sách hình ảnh</h5>
+			<div class="header-elements">
+				<a href="/admin/picture/create" type="button" class="btn btn-outline-primary" style="margin-right:20px">Thêm hình ảnh</a>
+				<div class="list-icons">
+					<a class="list-icons-item" data-action="collapse"></a>
+					<a class="list-icons-item" data-action="reload"></a>
+					<a class="list-icons-item" data-action="remove"></a>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table" style="table-layout: fixed;">
+				<thead>
+					<tr>
+						<th width="5%">#</th>
+						<th width="30%">Hình ảnh</th>
+						<th width="30%">Thời gian tạo</th>
+						<th class="text-center" width="15%">Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@count</td>
+							<td>
+								<img class="img-post" src="@item.Guid"/>
+							</td>
+							<td>@item.CreatedOn </td>
+							<td class="text-center">
+								<div class="list-icons">
+									<div class="list-icons-item dropdown">
+										<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="false"><i class="icon-menu7"></i></a>
+										<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-164px, 16px, 0px);">
+											<a href="/admin/picture/edit/@item.Id" class="dropdown-item"><i class="icon-file-stats"></i> Sửa</a>
+											<a href="#" class="dropdown-item btnDelete" data-id="@item.Id"><i class="icon-file-text2"></i> Xoá</a>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						count++;
+					}
+				</tbody>
+			</table>
+			
+		</div>
+
+	</div>
+
+</div>
+

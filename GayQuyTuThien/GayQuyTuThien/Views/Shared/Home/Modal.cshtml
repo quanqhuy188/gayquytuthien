@@ -1,0 +1,116 @@
+﻿<div class="modal fade" id="postcardModal" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img loading="lazy" class="w-100" src="/image/postcard-banner.png" alt="">
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <span class="title">Tên của bạn là*</span>
+                <input type="text" id="username" class="form-control user-group mt-3" maxlength="13" onkeyup="onInputNameChange(event)">
+                <div class="sum-character">
+                    <span class="alert-name invisible">Vui lòng nhập tên của bạn</span>
+                    <span><span id="count-name">0</span><span>/13</span> </span>
+                </div>
+                <span class="title mt-1">Giới tính</span>
+                <div class="gender-group mt-3">
+                    <label class="flex-fill">
+                        Nữ
+                        <input type="radio" class="gender-input" name="gender" value="0">
+                    </label>
+                    <label class="flex-fill">
+                        Nam
+                        <input type="radio" class="gender-input" name="gender" value="1">
+                    </label>
+                </div>
+                <button class="btn btn-create-postcard mt-4" onclick="generatorPostcard(this)">
+                    <b>Tạo Postcard với tên của bạn</b>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ios-image-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="list-milk">
+                    <img loading="lazy" src="/image/milks/greenmilk-header.png" alt="">
+                    @*  <img loading="lazy" src="/image/milks/2.png" alt="">
+                    <img loading="lazy" src="/image/milks/3.png" alt="">
+                    <img loading="lazy" src="/image/milks/4.png" alt=""> *@
+                </div>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class=" fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img loading="lazy" src="" class="w-100" alt="">
+            </div>
+            <div class="modal-footer">
+                <img loading="lazy" src="/image/arrow-ios.png" alt="">
+                <span>Nhấn giữ hình để lưu postcard về máy nhé</span>
+                <button class="btn bn-outline mx-2 border border-light text-light" onclick="copyClipboard()">
+                    Copy nội dung <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="list-milk">
+                    <img loading="lazy" src="/image/milks/greenmilk-header.png" alt="">
+                   @*  <img loading="lazy" src="/image/milks/2.png" alt="">
+                    <img loading="lazy" src="/image/milks/3.png" alt="">
+                    <img loading="lazy" src="/image/milks/4.png" alt=""> *@
+                </div>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Cảm ơn bạn đã chia sẻ tình yêu thương tới các trẻ em nghèo có hoàn cảnh khó khăn</span>
+                <img loading="lazy" id="img-result" src="" class="w-100" alt="">
+                <canvas id="postcardCanvas" width="800" height="1000" class="d-none"></canvas>
+            </div>
+            <div class="modal-footer">
+                <img loading="lazy" src="/image/footer-banner.png" class="w-100" alt="">
+                <button class="btn" onclick="downloadPostCard()">
+                    Lưu Postcard
+                    <i class="fa-solid fa-arrow-down"></i>
+                </button>
+                <button  class="btn bn-outline mx-2" onclick="copyClipboard()">
+                    Copy nội dung <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none" id="contentHTML"></div>
+
+<div class="modal fade" id="androidModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="warning">
+                    <img loading="lazy" width="35px" src="/image/content/warning.png" alt="">
+                    <img loading="lazy" width="35px" src="/image/content/warning.png" alt="">
+                    <img loading="lazy" width="35px" src="/image/content/warning.png" alt="">
+                </div>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong class="text-danger my-2">Facebook không hỗ trợ tải file ảnh. Xin vui lòng mở trang web bằng trình duyệt ngoài theo hướng dẫn sau đây</strong>
+                <img loading="lazy"  src="./image/content/guide_external_browser.png" class="w-100" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>

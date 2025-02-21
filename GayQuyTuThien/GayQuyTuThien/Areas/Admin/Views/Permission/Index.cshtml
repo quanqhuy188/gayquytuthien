@@ -1,0 +1,293 @@
+﻿@model IEnumerable<PermissionDto>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+	int count = 1;
+    int maxLevel = (int)ViewBag.MaxLevel;
+    var roles = (List<RoleDto>)ViewBag.Roles;
+    var currentRoleId = (string)ViewBag.CurrentRoleId;
+}
+
+@section footer{
+    <script>
+
+
+
+        $("#select-cate").select2({
+        });
+
+        $("#select-cate").change(function () {
+            var roleId = $('.select-cate').val();
+            window.location.href = '/admin/permission/permissions?roleId=' + roleId;
+        });
+
+        $(document).on('click', '.btnUpdate', function (e) {
+            e.preventDefault();
+            var roleId = $('.select-cate').val();
+            $("#modal-permission").modal();
+            var id = $(this).data('id');
+            $('#per-id').val(id);
+            $.ajax({
+                type: "POST",
+                url: '/admin/permission/getbyid',
+                data: { roleId, Id: id },
+                success: function (responce) {
+                    console.log(responce);
+                    if (responce.status == true) {
+                        $('#checkboxRead').prop('checked', responce.data.canRead);
+                        $('#checkboxCreate').prop('checked', responce.data.canCreate);
+                        $('#checkboxUpdate').prop('checked', responce.data.canUpdate);
+                        $('#checkboxDelete').prop('checked', responce.data.canDelete);
+                        //var rowId = 'row-'+id;
+                        //var functionName = $('#row-' + id).text();
+                        //debugger;
+                        //$('#function_name').val(functionName);
+                    }
+                },
+                error: function () {
+                }
+            });
+        });
+
+        $(document).on('click', '.btnUpdatePer', function (e) {
+            var roleId = $('.select-cate').val();
+            var id = $('#per-id').val();
+            var canRead = $('#checkboxRead').is(":checked");
+            var canCreate = $('#checkboxCreate').is(":checked");
+            var canUpdate = $('#checkboxUpdate').is(":checked");
+            var canDelete = $('#checkboxDelete').is(":checked");
+            $.ajax({
+                type: "PUT",
+                url: '/admin/permission',
+                data: { Id: id, RoleId: roleId, canRead, canCreate, canUpdate, canDelete },
+                success: function (responce) {
+                    if (responce.status == true) {
+                        location.href = '/admin/permission/permissions/?roleId=' + roleId
+                    }
+                    else {
+                        toastr.error(responce.error);
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        });
+    </script>
+}
+
+<div class="page-header page-header-light">
+	<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+		<div class="d-flex">
+			<div class="breadcrumb">
+                <a href="/admin/home" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+				<span class="breadcrumb-item active">Permission list</span>
+			</div>
+			<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	<div class="card">
+		<div class="card-header header-elements-inline" style="width:1000px;">
+			<form style="width:100%;">
+				<div class="row">
+					<div class="col-md-4">
+                        <select data-placeholder="Select role" id="select-cate" name="roleId" class="form-control form-control-select2 select2-hidden-accessible select-cate" data-fouc="" tabindex="-1" aria-hidden="true">
+                            @foreach (var item in roles)
+                            {
+                                if (item.Id.Contains(currentRoleId))
+                                {
+                                    <option selected value="@item.Id">@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+						</select>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<div class="card">
+		<div class="card-header header-elements-inline">
+			<h5 class="card-title">Permission list</h5>
+			<div class="header-elements">
+				<div class="list-icons">
+					<a class="list-icons-item" data-action="collapse"></a>
+					<a class="list-icons-item" data-action="reload"></a>
+					<a class="list-icons-item" data-action="remove"></a>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table" style="table-layout: fixed;">
+				<thead>
+					<tr>
+						<th width="5%">#</th>
+						<th>Function Name</th>
+						<th>Role Name</th>
+						<th>CanRead</th>
+						<th>CanCreate</th>
+						<th>CanUpdate</th>
+						<th>CanDelete</th>
+						<th width="5%">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            @for (int i = 0; i <= maxLevel; i++)
+                            {
+                               
+                                if (item.Function.Level == i)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <td style="font-weight:600">@item.Function.Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="padding-left:@(i*25*2)px !important" id="row-@item.Id"> @item.Function.Name</td>
+
+                                    }
+                                }
+                            }
+                            <td>@item.ApplicationRole.Name</td>
+                            @if (item.CanRead)
+                            {
+                                <td><span class="badge bg-success">Active</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-danger">Locked</span></td>
+                            }
+                            @if (item.CanCreate)
+                            {
+                                <td><span class="badge bg-success">Active</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-danger">Locked</span></td>
+                            }
+                            @if (item.CanUpdate)
+                            {
+                                <td><span class="badge bg-success">Active</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-danger">Locked</span></td>
+                            }
+                            @if (item.CanDelete)
+                            {
+                                <td><span class="badge bg-success">Active</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-danger">Locked</span></td>
+                            }
+                            <td class="text-center">
+                                <div class="list-icons">
+                                    <div class="list-icons-item dropdown">
+                                        <a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="false"><i class="icon-menu7"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-164px, 16px, 0px);">
+                                            <a href="#" data-id=@item.Id data-value=@item.Function.Name class="dropdown-item btnUpdate"><i class="icon-file-stats"></i> Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+				</tbody>
+			</table>
+		</div>
+	</div>
+    <div class="modal" id="modal-permission" aria-modal="true" role="dialog" style="padding-right: 17px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><span id="function_name"></span></h4>
+                    <input hidden id="per-id" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Change permission - Please check</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- Minimal style -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- checkbox -->
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" id="checkboxRead" class="form-check-input">
+                                                    CanRead
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- checkbox -->
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" id="checkboxCreate" class="form-check-input">
+                                                    CanCreate
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- checkbox -->
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" id="checkboxUpdate" class="form-check-input">
+                                                    CanUpdate
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- checkbox -->
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" id="checkboxDelete" class="form-check-input">
+                                                    CanDelete
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btnUpdatePer">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+

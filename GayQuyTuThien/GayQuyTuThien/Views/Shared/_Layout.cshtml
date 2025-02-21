@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="twitter:title" content="Green Milk - Cùng Em Đến Trường">
+    <meta property="twitter:description" content="Dự án trao tặng sữa với mong muốn lan tỏa tinh thần yêu thương chia sẻ đến các em bé vùng cao. Với mỗi lượt chia sẻ kèm hashtag mà bạn thực hiện, Greenmilk sẽ trao tặng 1 hộp sữa cho trẻ em vùng cao.">
+    <meta property="twitter:card" content="https://greenmilkcungemdentruong.vn/image/banner/cedt.jpg">
+    <meta property="twitter:image" content="https://greenmilkcungemdentruong.vn/image/banner/cedt.jpg">
+    <meta property="og:title" content="Green Milk - Cùng Em Đến Trường">
+    <meta property="og:description" content="Dự án trao tặng sữa với mong muốn lan tỏa tinh thần yêu thương chia sẻ đến các em bé vùng cao. Với mỗi lượt chia sẻ kèm hashtag mà bạn thực hiện, Greenmilk sẽ trao tặng 1 hộp sữa cho trẻ em vùng cao.">
+    <meta name="description" content="Dự án trao tặng sữa với mong muốn lan tỏa tinh thần yêu thương chia sẻ đến các em bé vùng cao. Với mỗi lượt chia sẻ kèm hashtag mà bạn thực hiện, Greenmilk sẽ trao tặng 1 hộp sữa cho trẻ em vùng cao.">
+    <meta property="og:url" content="https://greenmilkcungemdentruong.vn">
+    <meta property="og:site_name" content="Green Milk - Cùng Em Đến Trường">
+    <meta property="og:image" content="https://greenmilkcungemdentruong.vn/image/banner/cedt.jpg">
+    <title>Green Milk - Cùng Em Đến Trường</title>
+    <link rel="icon" type="image/png" href="~/image/favicon/favicon.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ios-image-modal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GayQuyTuThien.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="h-100 d-flex flex-column">
+
+    @RenderBody()
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/GVs.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/postcard.js" asp-append-version="true"></script>
+    <script src="~/js/map.js" asp-append-version="true"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

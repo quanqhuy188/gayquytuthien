@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" href="~/image/logo/logo.png" type="image/png">
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/admin/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css">
+    <link href="~/lib/summernote/summernote.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+    <!-- /global stylesheets -->
+
+    <style>
+        body {
+            /* font-family: 'Montserrat', sans-serif !important; */
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
+            /*color: white;*/
+        }
+
+        p {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
+        }
+
+        a {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
+        }
+
+        .navbar-brand img {
+            height: 2rem !important;
+        }
+
+        .card-title {
+            color: #333 !important;
+        }
+
+        .img-post {
+            width: 50%;
+        }
+
+        .sidebar-dark .nav-sidebar .nav-item > .nav-link.active, .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item > .nav-link.active {
+            background-color: #26a69a !important;
+            color: #fff !important;
+        }
+
+        .note-editor .note-toolbar .note-style .dropdown-style h1, .note-editor .note-toolbar .note-style .dropdown-style h2, .note-editor .note-toolbar .note-style .dropdown-style h3, .note-editor .note-toolbar .note-style .dropdown-style h4, .note-editor .note-toolbar .note-style .dropdown-style h5, .note-editor .note-toolbar .note-style .dropdown-style h6, .note-editor .note-toolbar .note-style .dropdown-style p, .note-popover .popover-content .note-style .dropdown-style h1, .note-popover .popover-content .note-style .dropdown-style h2, .note-popover .popover-content .note-style .dropdown-style h3, .note-popover .popover-content .note-style .dropdown-style h4, .note-popover .popover-content .note-style .dropdown-style h5, .note-popover .popover-content .note-style .dropdown-style h6, .note-popover .popover-content .note-style .dropdown-style p {
+            color: black !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    @await Component.InvokeAsync("HeaderAdmin")
+
+    <!-- /main navbar -->
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        @await Component.InvokeAsync("Sidebar")
+
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+            @RenderBody()
+
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <input type="hidden" id="success" value="@TempData["success"]" />
+    <input type="hidden" id="info" value="@TempData["info"]" />
+    <input type="hidden" id="warning" value="@TempData["warning"]" />
+    <input type="hidden" id="error" value="@TempData["error"]" />
+    <!-- /page content -->
+    <!-- Core JS files -->
+    <script src="~/assets/admin/global_assets/js/main/jquery.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/assets/admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script src="~/assets/admin/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+
+    <script src="~/assets/admin/js/app.js"></script>
+    <script src="~/assets/admin/global_assets/js/demo_pages/datatables_basic.js"></script>
+    <script src="~/lib/bootbox.min.js"></script>
+    @* <script src="~/assets/admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script> *@
+    @* <script src="~/lib/ckeditor/ckeditor.js"></script> *@
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/lib/summernote/summernote.min.js"></script>
+    @*<script src="~/assets/admin/global_assets/js/demo_pages/form_tags_input.js"></script>*@
+    @*<script src="~/assets/admin/global_assets/js/demo_pages/form_layouts.js"></script>*@
+    <!-- /theme JS files -->
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+
+        $(function () {
+            if ($('#success').val()) {
+                displayMessage($('#success').val(), 'success');
+            }
+            if ($('#info').val()) {
+                displayMessage($('#info').val(), 'info');
+            }
+            if ($('#warning').val()) {
+                displayMessage($('#warning').val(), 'warning');
+            }
+            if ($('#error').val()) {
+                displayMessage($('#error').val(), 'error');
+            }
+        });
+        var displayMessage = function (message, msgType) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onClick": null,
+                "showDuration": "500",
+                "hideDuration": "2000",
+                "timeOut": "3000",
+                "extendedTimeOut": "2000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr[msgType](message);
+        };
+
+        $(function () {
+            var url = window.location.pathname,
+                urlRegExp = new RegExp(url.replace(/\/$/, '') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+            // now grab every link from the navigation
+            $('.nav-link').each(function () {
+                // and test its normalized href against the url pathname regexp
+                if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
+                    $(this).addClass('active');
+                }
+                //$('.nav-item').each(function () {
+                //    // and test its normalized href against the url pathname regexp
+                //    if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
+                //        $(this).addClass('menu-open');
+                //    }
+                //});
+            });
+
+        });
+    </script>
+    <script src="https://cdn.ckbox.io/ckbox/latest/ckbox.js"></script>
+    @RenderSection("footer", required: false)
+    <script>
+        // Activate Flatpickr on the date inputs
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+
+        // Get URL parameters
+        const fromDateParam = getUrlParameter('fromDate');
+        const toDateParam = getUrlParameter('toDate');
+
+        // Set values of date inputs
+        startDateInput.value = fromDateParam;
+        endDateInput.value = toDateParam;
+
+        function setMinMaxDates(datePicker, minDate, maxDate) {
+            datePicker.set('minDate', minDate);
+            datePicker.set('maxDate', maxDate);
+        }
+
+        const startDatePicker = flatpickr(startDateInput, {
+            dateFormat: "d.m.Y",
+            onReady: function () {
+                const currentDate = new Date();
+                const currentDateFormatted = formatDate(currentDate);
+                setMinMaxDates(this, null, currentDateFormatted);
+            },
+            onClose: function (selectedDates) {
+                if (selectedDates && selectedDates.length > 0) {
+                    const isoDateString = selectedDates[0];
+                    const dateObject = new Date(isoDateString);
+                    const formattedDate = formatDate(dateObject);
+                    setMinMaxDates(endDatePicker, formattedDate, null);
+                }
+
+            }
+        });
+
+        const endDatePicker = flatpickr(endDateInput, {
+            dateFormat: "d.m.Y",
+            onClose: function (selectedDates) {
+                if (selectedDates && selectedDates.length > 0) {
+                    const isoDateString = selectedDates[0];
+                    const dateObject = new Date(isoDateString);
+                    const formattedDate = formatDate(dateObject);
+                    setMinMaxDates(startDatePicker, null, formattedDate);
+                }
+
+            }
+        });
+
+        function addLeadingZero(number) {
+            return number < 10 ? `0${number}` : `${number}`;
+        };
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+        function formatDate(date) {
+            const day = addLeadingZero(date.getDate());
+            const month = addLeadingZero(date.getMonth() + 1); // Tháng bắt đầu từ 0, cần phải cộng thêm 1
+            const year = date.getFullYear();
+            return `${day}.${month}.${year}`;
+        }
+        // Add click event listener to clear date button
+        const clearDateButton = document.getElementById('btn-clear-date');
+        clearDateButton.addEventListener('click', function () {
+            // Clear values of date inputs
+            startDateInput.value = '';
+            endDateInput.value = '';
+        });
+
+    </script>
+</body>
+</html>

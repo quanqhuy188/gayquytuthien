@@ -1,0 +1,94 @@
+﻿@model UserUpdateViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+    var roles = (List<RoleDto>)ViewBag.Roles;
+}
+
+@section footer{
+    <script>
+        $("#select-cate").select2({
+        });
+    </script>
+}
+
+<div class="page-header page-header-light">
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a href="/admin/home" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+                <span class="breadcrumb-item active">Edit category</span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- Vertical form options -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Basic layout-->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title">Edit category</h5>
+                    <div class="header-elements">
+                        <div class="list-icons">
+                            <a class="list-icons-item" data-action="collapse"></a>
+                            <a class="list-icons-item" data-action="reload"></a>
+                            <a class="list-icons-item" data-action="remove"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <form asp-area="Admin" asp-controller="User" asp-action="Edit" method="post">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" asp-for="FullName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" asp-for="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>PhoneNumber:</label>
+                            <input type="text" asp-for="PhoneNumber" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select role:</label>
+                            <select data-placeholder="Select your state" id="select-cate" name="ApplicationRoleId" asp-for="ApplicationRoleId" class="form-control form-control-select2 select2-hidden-accessible" data-fouc="" tabindex="-1" aria-hidden="true">
+                                <option></option>
+                                @foreach (var item in roles)
+                                {
+                                    if (item.Id == Model.ApplicationRoleId)
+                                    {
+                                        <option selected asp-for="ApplicationRoleId" value="@item.Id">@item.Name</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option asp-for="ApplicationRoleId" value="@item.Id">@item.Name</option>
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /basic layout -->
+
+        </div>
+    </div>
+
+</div>
+
+

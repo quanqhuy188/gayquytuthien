@@ -1,0 +1,58 @@
+﻿@model List<RoleDto>
+@{
+    ViewData["Title"] = "RoleManagement";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+	int count = 1;
+}
+
+<div class="page-header page-header-light">
+	<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+		<div class="d-flex">
+			<div class="breadcrumb">
+				<a href="/admin/home" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+				<span class="breadcrumb-item active">PostCategory list</span>
+			</div>
+			<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	<div class="card">
+		<div class="card-header header-elements-inline">
+			<h5 class="card-title">Role list</h5>
+			<div class="header-elements">
+				<div class="list-icons">
+					<a class="list-icons-item" data-action="collapse"></a>
+					<a class="list-icons-item" data-action="reload"></a>
+					<a class="list-icons-item" data-action="remove"></a>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table" style="table-layout: fixed;">
+				<thead>
+					<tr>
+						<th width="5%">#</th>
+						<th>Name</th>
+						<th width="30%">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@count</td>
+							<td>@item.Name</td>
+							<td>@item.Description</td>
+						</tr>
+						count++;
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+

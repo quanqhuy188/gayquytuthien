@@ -1,0 +1,110 @@
+﻿@model IEnumerable<SubmitFormDto>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Shared List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+    int count = 1;
+    string totalItemCount = (string)ViewBag.TotalItemCount;
+}
+
+
+<div class="page-header page-header-light">
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a href="/admin/home" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Trang chủ</a>
+                <span class="breadcrumb-item active">Quản lý chia sẻ</span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline" style="width:1000px;">
+            <form asp-area="Admin" asp-controller="SubmitForm" asp-action="Index" method="get" style="width:100%;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" name="fromDate" id="startDate" class="form-control" placeholder="Thời gian từ...">
+
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="toDate" id="endDate" class="form-control" placeholder="Thời gian đến...">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" id="btn-clear-date" class="btn btn-outline-danger">Xoá</button>
+                        <button type="submit" class="btn btn-primary">Tìm kiếm <i class="icon-search4 ml-2"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Số lượt chia sẻ : <span style="color:#2196f3">@totalItemCount</span></h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th width="5%">#</th>
+                        <th width="40%">Tên người dùng</th>
+                        <th width="40%">Thời gian chia sẻ</th>
+                        <th width="15%">Giới tính</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Username </td>
+                            <td>@item.CreatedOn</td>
+                            <td>
+                                @if (item.Gender == "1")
+                                {
+                                    @:Nam
+                                }
+                                else if (item.Gender == "0")
+                                {
+                                    @:Nữ
+                                } else
+                                {
+                                    @:Không xác định
+                                }
+                            </td>
+
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-right" style="float:right;padding-top:30px;padding-right:30px;padding-bottom:30px;">
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, fromDate = Context.Request.Query["fromDate"], toDate = Context.Request.Query["toDate"] }),
+                new X.PagedList.Web.Common.PagedListRenderOptions{
+                LiElementClasses = new string[]{"page-item"},
+                PageClasses = new string[] {"page-link"},
+                MaximumPageNumbersToDisplay = 5
+                })
+            </div>
+        </div>
+    </div>
+
+</div>
+

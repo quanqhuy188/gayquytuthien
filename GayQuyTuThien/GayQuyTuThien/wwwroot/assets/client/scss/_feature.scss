@@ -1,0 +1,90 @@
+/*===========================
+    4.FEATURE css 
+===========================*/
+
+
+
+
+
+
+.feature-area{
+    padding-top: 40px;
+}
+
+
+.feature-post{
+    position: relative;
+    z-index: 10;
+    &::before{
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 160px;
+        background: linear-gradient(rgba(23, 34, 43, 0) 0%, #17222b 100%);
+        opacity: 0.85;
+        z-index: 1;
+    }
+    & .feature-post-thumb{
+        overflow: hidden;
+        & img{
+            width: 100%;
+            @include transition(0.3s);
+        }
+    }
+    & .feature-post-content{
+        position: absolute;
+        left: 15px;
+        bottom: 0px;
+        z-index: 5;
+        & .title{
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            & a{
+                color: $white;
+                &:hover{
+                    color: $theme-color-2;
+                }
+            }
+        }
+    }
+    &:hover{
+        & .feature-post-thumb{
+            & img{
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+
+.feature-post-slider{
+    & .slick-arrow{
+        position: absolute;
+        top: -50px;
+        z-index: 9;
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        line-height: 27px; 
+        border: 2px solid #C1C4C6;
+        font-size: 20px;
+        color: #C1C4C6;
+        &.prev{
+            right: 45px;
+        }
+        &.next{
+            right: 0;
+        }
+    }
+}
+
+
+
+
+
+
+

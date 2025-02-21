@@ -1,0 +1,99 @@
+/*===========================
+    9.HERO css 
+===========================*/
+
+
+
+
+.hero-area{
+    position: relative;
+    padding: 310px 0;
+    @media #{$md} {
+        padding: 200px 0;
+    }
+    @media #{$xs} {
+        padding: 200px 0;
+    }
+    & .bg-image{
+        background-image: url(../images//hero-bg.jpg);
+        left: 0;
+        top: 0;
+    }
+}
+
+
+
+.hero-content{
+    & .title{
+        color: $white;
+        font-size: 44px;
+        line-height: 55px;
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-thickness: 4px;
+        margin-bottom: 0;
+        padding-top: 15px;
+        @media #{$lg} {
+            font-size: 38px;
+            line-height: 48px;
+        }
+        @media #{$xs} {
+            font-size: 30px;
+            line-height: 36px;
+        }
+        @media #{$sm} {
+            font-size: 36px;
+            line-height: 46px;
+        }
+    }
+    & .hero-meta{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        align-items: center;
+        & .meta-categories{
+            position: relative;
+            padding-left: 15px;
+            &::before{
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background: linear-gradient(#f55 0%, #ab50ef 100%);
+                width: 4px;
+                height: 19px;
+            }
+            & span{
+                font-size: 15px;
+                font-weight: 500;
+                color: $white;
+            }
+        }
+        & .meta-date{
+            position: relative;
+            padding-left: 15px;
+            margin-left: 15px;
+            &::before{
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.75);
+                width: 2px;
+                height: 15px;
+            }
+            & span{
+                font-size: 15px;
+                font-weight: 500;
+                color: $white;
+                
+            }
+
+        }
+    }
+}
+

@@ -1,0 +1,51 @@
+﻿﻿<section class="m-slide-image">
+    <div class="color-primary1 f-f-Montserrat-Bold d-flex justify-content-center align-items-center slide-image-text">
+        <div>Hình ảnh dự án “Green Milk cùng em đến trường”</div>
+    </div>
+    <div class="slider1 mb-3">
+        <div class="slide-track">
+            @if(Model.Pictures != null && Model.Pictures.Count > 0)
+            {
+                @for(var i = 0;i<3;i++)
+                {
+                    @foreach (var item in Model.Pictures)
+                    {
+                        <div class="slide">
+                            <img class="height-width-custom" src="@item.Guid" alt="">
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+
+    <div class="slider2">
+        <div class="slide-track">
+            @if (Model.PicturesRevert != null && Model.PicturesRevert.Count > 0)
+            {
+                @for (var i = 0; i < 3; i++)
+                {
+                    @foreach (var item in Model.PicturesRevert)
+                    {
+                        <div class="slide">
+                            <img class="height-width-custom" src="@item.Guid" alt="">
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color:#E0F1ED">
+        <div class="container d-flex align-items-center p-4">
+            <div class="row">
+                <div class="col">
+                    <span class="f-f-Montserrat-Regular text-slide-image-note">
+                        *Toàn bộ hình ảnh của các em bé vùng cao được sử
+                        dụng trong dự án đã được nhãn hàng Greenmilk xin phép sử dụng với ba mẹ và người giám hộ của các
+                        em.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

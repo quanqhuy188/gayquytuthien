@@ -1,0 +1,200 @@
+/*===========================
+    12.ABOUT AUTHOR css 
+===========================*/
+
+
+
+
+.about-author-area {
+    background: $white;
+    padding: 20px 0px 40px;
+    box-shadow: 0px 10px 40px rgba(23, 34, 43, 0.05);
+    
+}
+
+
+.about-author-content {
+    & nav {
+        & ol {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+
+            & li {
+                font-size: 13px;
+                font-weight: 400;
+                color: rgba(23, 34, 43, 0.5);
+
+                & a {
+                    font-weight: 500;
+                    color: rgba(23, 34, 43, 0.5);
+                }
+            }
+        }
+    }
+    & .author-content{
+        padding-left: 145px;
+        position: relative;
+        margin-top: 46px;
+        @media #{$xs} {
+            padding-left: 0;
+        }
+        & .thumb{
+            position: absolute;
+            left: 0;
+            top: 0;
+            @media #{$xs} {
+                position: static;
+                margin-bottom: 15px;
+            }
+        }
+        & .title{
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 8px;
+        }
+        & ul{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            & li{
+                display: inline-block;
+                color: rgba(23, 34, 43, 0.5);
+                font-size: 16px;
+                font-weight: 400;
+                margin-right: 20px;
+                & span{
+                    font-size: 14px;
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+        }
+        & .text{
+            font-size: 15px;
+            line-height: 23px;
+            font-weight: 400;
+            padding-top: 22px;
+        }
+    }
+}
+
+
+
+
+
+
+
+.about-item-area{
+    padding-bottom: 100px;
+    & .about-tab-btn{
+        & ul{
+            padding-bottom: 19px;
+            & li{
+                & > a{
+                    margin: 0;
+                    padding: 0;
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: rgba(23, 34, 43, 0.4);
+                    margin-right: 30px;
+                    @media #{$xs} {
+                        margin-right: 15px;
+                        font-size: 20px;
+                    }
+                    &.active{
+                        background-color: transparent;
+                        color: $heading-color;
+                    }
+                }
+            }
+        }
+        & .archive-btn{
+            & ul{
+                margin: 0;
+                padding: 0 0 30px;
+                list-style-type: none;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: space-between;
+                & li{
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: $heading-color;
+                }
+            }
+        }
+    }
+}
+
+
+.about-item-area{
+    & .pagination-item{
+        & nav{
+            & ul{
+                & li{
+                    & a{
+                        display: inline-block;
+                        height: 60px;
+                        width: 60px;
+                        text-align: center;
+                        line-height: 60px;
+                        background: rgba(23, 34, 43, 0.1);
+                        border: 0;
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: $heading-color;
+                        margin-right: 5px;
+                        @media #{$xs} {
+                            height: 50px;
+                            width: 50px;
+                            font-size: 20px;
+                            line-height: 50px;
+                        }
+                        &:hover,
+                        &.active{
+                            background: $theme-color-2;
+                            color: $white;
+                        }
+                    }
+                    &:first-child{
+                        & a{
+                            border-radius: 0 !important;
+                        }
+                    }
+                    &:last-child{
+                        & a{
+                            border-radius: 0 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
